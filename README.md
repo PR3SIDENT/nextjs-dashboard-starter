@@ -1,56 +1,77 @@
-# Carline Dashboard
+# Next.js Dashboard Starter
 
-A production-ready Next.js dashboard application built with shadcn/ui's sidebar-03 block pattern. Features modern dark-theme design, comprehensive tooling, and full TypeScript support.
+A modern, production-ready dashboard starter template built with Next.js 15, shadcn/ui, and Tailwind CSS. Features a beautiful dark theme, responsive sidebar navigation, and comprehensive development tooling.
 
-## Tech Stack
+## ✨ Features
 
-- **Framework**: Next.js 15.4.6 (App Router, TypeScript, Tailwind CSS)
-- **UI Components**: shadcn/ui (sidebar-03 block pattern)
-- **Charts**: Recharts (ready for implementation)
+- 🌗 **Dark mode by default** with system theme support
+- 📱 **Responsive design** with collapsible sidebar
+- ♿ **Accessibility features** built-in
+- 🎨 **Beautiful UI components** from shadcn/ui
+- 🔧 **Complete development tooling** (ESLint, Prettier, TypeScript)
+- ✅ **Testing setup** (Vitest + Playwright)
+- 🚀 **Production-ready** configuration
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15.4.6 (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS v4 with OKLCH colors
+- **UI Components**: shadcn/ui + Radix UI
 - **Icons**: Lucide React
-- **Styling**: Tailwind CSS with dark mode support
-- **Theme**: next-themes for dark/light mode switching
+- **Fonts**: Geist Sans & Geist Mono
+- **Theme**: next-themes for dark/light switching
 - **Testing**: Vitest + React Testing Library + Playwright
-- **Linting/Formatting**: ESLint + Prettier + Husky + lint-staged
-- **Type Safety**: TypeScript (strict mode) + Zod for runtime validation
-- **Package Manager**: npm
-- **CI/CD**: GitHub Actions
+- **Linting**: ESLint + Prettier + Husky hooks
+- **Validation**: Zod for runtime type safety
 
-## Features
+## 🚀 Quick Start
 
-- 🌗 Dark mode by default (matches shadcn/ui block styling exactly)
-- 📱 Responsive design with mobile-friendly sidebar
-- ♿ Accessibility features (ARIA labels, 44px touch targets)
-- 🎨 Beautiful UI components from shadcn/ui
-- 📊 Collapsible sidebar with icon mode
-- 🔧 Complete tooling setup with git hooks
-- ✅ Comprehensive testing setup
-- 🚀 Production-ready configuration
-
-## Requirements
+### Prerequisites
 
 - Node.js 20 or later
 - npm (comes with Node.js)
 
-## Installation & Setup
-
-### Clone and Install
+### Installation
 
 ```bash
-git clone <repository-url>
-cd carline-dashboard
+# Clone this repository
+git clone <your-repo-url>
+cd nextjs-dashboard-starter
+
+# Install dependencies
 npm install
-```
 
-### Run Development Server
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
+Open [http://localhost:3000](http://localhost:3000) to see your dashboard.
 
-### Available Scripts
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Global styles with CSS variables
+│   ├── layout.tsx         # Root layout with theme provider
+│   └── page.tsx           # Main dashboard page
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── app-sidebar.tsx   # Main sidebar navigation
+│   ├── nav-main.tsx      # Navigation menu items
+│   ├── nav-projects.tsx  # Projects section
+│   ├── nav-user.tsx      # User profile dropdown
+│   ├── team-switcher.tsx # Team/organization switcher
+│   └── theme-provider.tsx # Theme context provider
+├── hooks/                # Custom React hooks
+│   └── use-mobile.ts     # Mobile device detection
+└── lib/                  # Utility functions
+    ├── env.ts            # Environment variable validation
+    └── utils.ts          # Tailwind CSS utilities
+```
+
+## 📜 Available Scripts
 
 ```bash
 # Development
@@ -60,38 +81,17 @@ npm run start        # Start production server
 
 # Code Quality
 npm run lint         # Run ESLint
-npm run format       # Format code with Prettier
+npm run format       # Format with Prettier
 npm run typecheck    # TypeScript type checking
 
 # Testing
-npm run test         # Run unit tests with Vitest
-npm run test:e2e     # Run end-to-end tests with Playwright
+npm run test         # Run unit tests
+npm run test:e2e     # Run end-to-end tests
 ```
 
-## Project Structure
+## 🎨 Customization
 
-```
-src/
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout with theme provider
-│   └── page.tsx           # Main dashboard page
-├── components/            # React components
-│   ├── ui/               # shadcn/ui components
-│   ├── app-sidebar.tsx   # Main sidebar component
-│   ├── nav-main.tsx      # Navigation menu
-│   ├── nav-projects.tsx  # Projects navigation
-│   ├── nav-user.tsx      # User dropdown
-│   ├── team-switcher.tsx # Team switching dropdown
-│   └── theme-provider.tsx # Theme context provider
-├── hooks/                # Custom React hooks
-│   └── use-mobile.ts     # Mobile detection hook
-└── lib/                  # Utility functions
-    ├── env.ts            # Environment validation
-    └── utils.ts          # Utility functions
-```
-
-## How to Add More shadcn/ui Components
+### Adding shadcn/ui Components
 
 ```bash
 # Add individual components
@@ -99,59 +99,59 @@ npx shadcn@latest add button
 npx shadcn@latest add card
 npx shadcn@latest add table
 
-# Add multiple components at once
+# Add multiple components
 npx shadcn@latest add button card table form
 ```
 
-## How to Toggle Dark Mode
+### Theme Customization
 
-The app defaults to dark mode but supports system preference and manual switching:
+The app uses a custom color system with OKLCH colors. Modify colors in `src/app/globals.css`:
 
-```tsx
-import { useTheme } from 'next-themes'
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  /* ... more color variables */
+}
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-
-  return (
-    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-      Toggle theme
-    </button>
-  )
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  /* ... dark mode colors */
 }
 ```
 
-## Environment Variables
+### Environment Variables
 
-Configure environment variables in `.env.local`:
+Create `.env.local` for your environment variables:
 
 ```bash
-# Example variables (none required for basic setup)
-# NEXT_PUBLIC_API_URL=https://api.example.com
-# DATABASE_URL=postgresql://...
+# Example variables
+NEXT_PUBLIC_APP_NAME="My Dashboard"
+DATABASE_URL="postgresql://..."
 ```
 
-Environment validation is handled by `src/lib/env.ts` using Zod.
+Environment validation is handled in `src/lib/env.ts` using Zod.
 
-## Testing
+## 🧪 Testing
 
-### Unit Tests (Vitest)
+### Unit Tests
 
 ```bash
 npm run test
 ```
 
-Tests are located in `__tests__/` directory and use React Testing Library.
+Tests use Vitest and React Testing Library. Example test in `__tests__/home.test.tsx`.
 
-### End-to-End Tests (Playwright)
+### End-to-End Tests
 
 ```bash
 npm run test:e2e
 ```
 
-E2E tests are in the `e2e/` directory and test the complete user workflows.
+E2E tests use Playwright and are located in the `e2e/` directory.
 
-## Deployment
+## 🚀 Deployment
 
 ### Vercel (Recommended)
 
@@ -166,33 +166,23 @@ npm run build
 npm start
 ```
 
-The app can be deployed to any platform that supports Node.js.
+Works on any platform supporting Node.js (Netlify, Railway, DigitalOcean, etc.).
 
-## Screenshots
+## 🤝 Contributing
 
-_TODO: Add screenshots of the dashboard in dark mode_
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests: `npm run test && npm run test:e2e`
+5. Check linting: `npm run lint && npm run typecheck`
+6. Submit a pull request
 
-## Architecture Decisions
+## 📄 License
 
-- **App Router**: Using Next.js 13+ app directory for better organization
-- **TypeScript Strict**: Enabled `strict` and `noUncheckedIndexedAccess` for maximum type safety
-- **Dark Mode First**: Follows shadcn/ui block styling with dark theme as default
-- **Component Organization**: shadcn/ui components in `components/ui/`, custom components at root level
-- **Testing Strategy**: Unit tests for components, E2E tests for user workflows
-- **Git Hooks**: Pre-commit hooks ensure code quality before commits
-
-## Contributing
-
-1. Run `npm run typecheck` - Ensure no TypeScript errors
-2. Run `npm run lint` - Ensure no linting errors
-3. Run `npm run test` - Ensure all tests pass
-4. Run `npm run build` - Ensure build succeeds
-5. Run `npm run test:e2e` - Ensure E2E tests pass
-
-## License
-
-MIT
+MIT License - feel free to use this starter for personal or commercial projects.
 
 ---
 
-Built with ❤️ using Next.js and shadcn/ui
+**Ready to build something amazing?** 🚀
+
+This starter gives you a solid foundation with modern tooling, beautiful UI, and best practices built-in. Just clone, install, and start building your next dashboard application!

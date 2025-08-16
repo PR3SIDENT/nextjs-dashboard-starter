@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Carline Dashboard',
-  description: 'A modern dashboard built with Next.js and shadcn/ui',
+  title: 'Next.js Dashboard Starter',
+  description:
+    'A modern dashboard starter template built with Next.js, shadcn/ui, and Tailwind CSS',
 }
 
 export default function RootLayout({
