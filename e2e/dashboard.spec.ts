@@ -4,12 +4,12 @@ test('dashboard loads and sidebar renders', async ({ page }) => {
   await page.goto('/')
 
   // Check if the page loads
-  await expect(page).toHaveTitle(/Carline Dashboard/)
+  await expect(page).toHaveTitle(/Next\.js Dashboard Starter/)
 
   // Check if sidebar navigation items are present
-  await expect(page.getByText('Platform')).toBeVisible()
-  await expect(page.getByText('Projects')).toBeVisible()
   await expect(page.getByText('Playground')).toBeVisible()
+  await expect(page.getByText('Models')).toBeVisible()
+  await expect(page.getByText('Documentation')).toBeVisible()
 
   // Check if breadcrumb is present
   await expect(page.getByText('Data Fetching')).toBeVisible()
@@ -28,5 +28,5 @@ test('dashboard loads and sidebar renders', async ({ page }) => {
   await page.waitForTimeout(300)
 
   // Verify sidebar items are still visible after toggling
-  await expect(page.getByText('Platform')).toBeVisible()
+  await expect(page.getByText('Playground')).toBeVisible()
 })
